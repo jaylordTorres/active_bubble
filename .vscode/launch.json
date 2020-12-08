@@ -5,10 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "active_bubble",
+            "name": "virtual android",
             "request": "launch",
             "type": "dart",
             "args": ["-d", "aosp"]
-        }
+        },
+        {
+            "name": "real android",
+            "request": "launch",
+            "type": "dart",
+            "args": ["-d", "sm"]
+        },
     ]
 }

@@ -13,13 +13,13 @@ class IdeaCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             ListTile(
               leading: CircleAvatar(
-                  backgroundImage: CachedNetworkImageProvider(idea.userThumb)),
+                  backgroundImage: CachedNetworkImageProvider(idea.user.image)),
               title: Text(
-                StringUtils.capitalize(idea.fullName),
+                StringUtils.capitalize(idea.user.fullName),
                 style: Theme.of(context).textTheme.subtitle1,
               ),
               // subtitle: Text(''),

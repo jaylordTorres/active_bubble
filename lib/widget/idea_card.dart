@@ -18,7 +18,7 @@ class IdeaCard extends StatelessWidget {
             ListTile(
               leading: CircleAvatar(
                   backgroundImage: CachedNetworkImageProvider(idea.user.image)),
-              title: Text(
+              title: SelectableText(
                 StringUtils.capitalize(idea.user.fullName),
                 style: Theme.of(context).textTheme.subtitle1,
               ),
@@ -28,7 +28,7 @@ class IdeaCard extends StatelessWidget {
               margin: EdgeInsets.only(left: 55),
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Text(
+                child: SelectableText(
                   idea.content,
                   style: Theme.of(context).textTheme.bodyText2,
                 ),

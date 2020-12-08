@@ -1,6 +1,5 @@
-import 'package:active_bubble/class/Idea_model.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+
 import '../util/util.dart';
 
 class IdeaCard extends StatelessWidget {
@@ -9,32 +8,40 @@ class IdeaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            ListTile(
-              leading: CircleAvatar(
-                  backgroundImage: CachedNetworkImageProvider(idea.user.image)),
-              title: SelectableText(
-                StringUtils.capitalize(idea.user.fullName),
-                style: Theme.of(context).textTheme.subtitle1,
+    return Dismissible(
+      confirmDismiss: (direction) async {
+        Toast.show(UiMessage.workingInprogress, context);
+        return false;
+      },
+      key: Key(idea.id.toString()),
+      child: Container(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ListTile(
+                leading: CircleAvatar(
+                    backgroundImage:
+                        CachedNetworkImageProvider(idea.user.image)),
+                title: SelectableText(
+                  StringUtils.capitalize(idea.user.fullName),
+                  style: Theme.of(context).textTheme.subtitle1,
+                ),
+                // subtitle: Text(''),
               ),
-              // subtitle: Text(''),
-            ),
-            Card(
-              margin: EdgeInsets.only(left: 55),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: SelectableText(
-                  idea.content,
-                  style: Theme.of(context).textTheme.bodyText2,
+              Card(
+                margin: EdgeInsets.only(left: 55),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: SelectableText(
+                    idea.content,
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

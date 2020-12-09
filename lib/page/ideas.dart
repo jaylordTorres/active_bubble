@@ -1,5 +1,6 @@
 import 'package:active_bubble/class/Idea_model.dart';
 import 'package:active_bubble/data/data.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../constant/main.dart';
 import '../widget/widget.dart';
@@ -14,6 +15,11 @@ class IdeasPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return UiPage(
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          tooltip: 'Logout',
+          child: Icon(Icons.exit_to_app),
+          onPressed: _onLogout,
+        ),
         bottomNavigationBar: BottomNavigationBar(items: [
           BottomNavigationBarItem(icon: Icon(Icons.ballot), label: "Feeds"),
           BottomNavigationBarItem(icon: Icon(Icons.post_add), label: "Create"),
@@ -33,5 +39,10 @@ class IdeasPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _onLogout() async {
+    await FirebaseAuth.instance.signOut();
+    print('logout');
   }
 }

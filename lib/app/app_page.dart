@@ -4,7 +4,20 @@ import '../class/class.dart';
 import '../page/page.dart';
 import '../constant/main.dart';
 
-final _pages = [
+final _guestPages = [
+  UiRouteItem(
+    uiRoutes[RootPage.route],
+    RootPage.route,
+    (_) => RootPage(),
+  ),
+  UiRouteItem(
+    uiRoutes[GuestInitPage.route],
+    GuestInitPage.route,
+    (_) => GuestInitPage(),
+  ),
+];
+
+final _userPages = [
   UiRouteItem(
     uiRoutes[RootPage.route],
     RootPage.route,
@@ -17,7 +30,12 @@ final _pages = [
   ),
 ];
 
-final Map<String, WidgetBuilder> uiRoutePages = Map.fromEntries(_pages
+final Map<String, WidgetBuilder> uiGuestRoutePages = Map.fromEntries(_guestPages
+    .map((UiRouteItem page) =>
+        MapEntry<String, WidgetBuilder>(page.path, page.builder))
+    .toList());
+
+final Map<String, WidgetBuilder> uiUserRoutePages = Map.fromEntries(_userPages
     .map((UiRouteItem page) =>
         MapEntry<String, WidgetBuilder>(page.path, page.builder))
     .toList());

@@ -1,3 +1,3 @@
 class UiMessage {
-  static String sample = '';
+  static String workingInprogress = 'reply is working in progress';
 }

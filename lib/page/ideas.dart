@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../class/idea_model.dart';
 import '../constant/main.dart';
-import '../cotainer/ideas/ideas.dart';
+import '../container/ideas/ideas.dart';
 import '../data/data.dart';
 import '../widget/widget.dart';
 
@@ -32,18 +32,11 @@ class _IdeasPageState extends State<IdeasPage> {
     }
   }
 
-  _create() {}
-
   @override
   Widget build(BuildContext context) {
     return UiPage(
       child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          tooltip: 'Logout',
-          child: Icon(Icons.exit_to_app),
-          onPressed: _create,
-          // onPressed: _onLogout,
-        ),
+        floatingActionButton: IdeaCreateFloatingButton(),
         bottomNavigationBar: BottomNavigationBar(
             onTap: (index) {
               setState(() {
@@ -63,6 +56,29 @@ class _IdeasPageState extends State<IdeasPage> {
           duration: Duration(milliseconds: 200),
         ),
       ),
+    );
+  }
+}
+
+class IdeaCreateFloatingButton extends StatelessWidget {
+  const IdeaCreateFloatingButton({
+    Key key,
+  }) : super(key: key);
+
+  _create(context) {
+    showBottomSheet(
+        context: context,
+        builder: (_) {
+          return IdeaCreate();
+        });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      tooltip: 'Post',
+      child: Icon(Icons.post_add_rounded),
+      onPressed: () => _create(context),
     );
   }
 }

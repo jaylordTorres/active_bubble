@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../class/class.dart';
 import '../page/page.dart';
 import '../constant/main.dart';
+import '../util/util.dart';
 
 final _guestPages = [
   UiRouteItem(
@@ -30,12 +31,6 @@ final _userPages = [
   ),
 ];
 
-final Map<String, WidgetBuilder> uiGuestRoutePages = Map.fromEntries(_guestPages
-    .map((UiRouteItem page) =>
-        MapEntry<String, WidgetBuilder>(page.path, page.builder))
-    .toList());
+final Map<String, WidgetBuilder> uiGuestRoutePages = generatePages(_guestPages);
 
-final Map<String, WidgetBuilder> uiUserRoutePages = Map.fromEntries(_userPages
-    .map((UiRouteItem page) =>
-        MapEntry<String, WidgetBuilder>(page.path, page.builder))
-    .toList());
+final Map<String, WidgetBuilder> uiUserRoutePages = generatePages(_userPages);

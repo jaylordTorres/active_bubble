@@ -1,3 +1,5 @@
+import 'package:active_bubble/class/ui_route_item.dart';
+import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 String cleanTags(String htmlText) {
@@ -14,4 +16,11 @@ asyncWebLauncher(String url) async {
     }
   } catch (e) {}
   return false;
+}
+
+generatePages(List<UiRouteItem> pages) {
+  return Map.fromEntries(pages
+      .map((UiRouteItem page) =>
+          MapEntry<String, WidgetBuilder>(page.path, page.builder))
+      .toList());
 }

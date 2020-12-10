@@ -1,12 +1,36 @@
 import 'package:active_bubble/widget/idea_reply.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../util/util.dart';
 
-class IdeaCard extends StatelessWidget {
+class IdeaCard extends StatefulWidget {
   const IdeaCard({Key key, this.idea}) : super(key: key);
-  final IdeaModel idea;
+  final QueryDocumentSnapshot idea;
 
+  @override
+  _IdeaCardState createState() => _IdeaCardState();
+}
+
+class _IdeaCardState extends State<IdeaCard> {
+  IdeaModel idea;
+  @override
+  void initState() {
+    _onLoad();
+    super.initState();
+  }
+
+  _onLoad() async {
+    final data = widget.idea.exists
+        ? await IdeaModel.fromQuerySnopShotAsync(widget.idea)
+        : null;
+
+    setState(() {
+      idea = data;
+    });
+  }
+
+  // final IdeaModel idea;
   void _onReply(context, idea) {
     final callBack = () {
       Navigator.of(context).pop();
@@ -25,10 +49,16 @@ class IdeaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (idea == null) {
+      return Container(
+        padding: EdgeInsets.symmetric(vertical: 16),
+        child: Center(child: CircularProgressIndicator()),
+      );
+    }
     return Dismissible(
       confirmDismiss: (direction) async {
         // Toast.show(UiMessage.workingInprogress, context);
-        _onReply(context, idea);
+        _onReply(context, widget.idea);
         return false;
       },
       key: Key(idea.id.toString()),
@@ -46,7 +76,6 @@ class IdeaCard extends StatelessWidget {
                   StringUtils.capitalize(idea.user.fullName),
                   style: Theme.of(context).textTheme.subtitle1,
                 ),
-                // subtitle: Text(''),
               ),
               Card(
                 margin: EdgeInsets.only(left: 55),

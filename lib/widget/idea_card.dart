@@ -1,7 +1,7 @@
-import 'package:active_bubble/widget/idea_reply.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../widget/idea_reply.dart';
 import '../util/util.dart';
 
 class IdeaCard extends StatefulWidget {
@@ -50,10 +50,11 @@ class _IdeaCardState extends State<IdeaCard> {
   @override
   Widget build(BuildContext context) {
     if (idea == null) {
-      return Container(
-        padding: EdgeInsets.symmetric(vertical: 16),
-        child: Center(child: CircularProgressIndicator()),
-      );
+      return Container(child: Text(''));
+      // return Container(
+      //   padding: EdgeInsets.symmetric(vertical: 16),
+      //   child: Center(child: CircularProgressIndicator()),
+      // );
     }
     return Dismissible(
       confirmDismiss: (direction) async {

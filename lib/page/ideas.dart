@@ -5,7 +5,7 @@ import '../container/ideas/ideas.dart';
 import '../data/data.dart';
 import '../widget/widget.dart';
 
-final data = ideas.map((e) => IdeaModel.fromJson(e)).toList();
+// final data = ideas.map((e) => IdeaModel.fromJson(e)).toList();
 
 class IdeasPage extends StatefulWidget {
   static UiRoutes route = UiRoutes.root;
@@ -21,9 +21,7 @@ class _IdeasPageState extends State<IdeasPage> {
   Widget builder() {
     switch (_selectedContainer) {
       case 0:
-        return IdeasContainer(
-          data: data,
-        );
+        return IdeasContainer();
       case 2:
         return SettingContainer();
         break;

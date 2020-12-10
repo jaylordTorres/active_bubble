@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../constant/main.dart';
 import '../../widget/idea_card.dart';
-import '../../class/idea_model.dart';
 
 class IdeasContainer extends StatefulWidget {
-  const IdeasContainer({Key key, this.data}) : super(key: key);
-  final List<IdeaModel> data;
+  const IdeasContainer({Key key}) : super(key: key);
 
   @override
   _IdeasContainerState createState() => _IdeasContainerState();
 }
 
 class _IdeasContainerState extends State<IdeasContainer> {
-  Query query = FirebaseFirestore.instance.collection(FireCollections.article);
+  Query query = FirebaseFirestore.instance
+      .collection(FireCollections.article)
+      .orderBy("cd", descending: true);
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(

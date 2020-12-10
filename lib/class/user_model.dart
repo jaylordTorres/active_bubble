@@ -15,7 +15,6 @@ class User implements BaseModel {
     surname = snop["ln"];
     middleName = snop["mn"];
     image = snop["p"];
-    print('user photo' + image);
   }
   static Future<User> fromDocumentReferenceAsync(DocumentReference ref) async {
     final data = await ref.get();

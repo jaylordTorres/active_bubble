@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   firebase_core: "0.5.3" 
+  cloud_firestore: ^0.14.4
   firebase_auth: "^0.18.4"
   transparent_image: ^1.0.0
   http: ^0.12.2

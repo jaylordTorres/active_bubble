@@ -26,5 +26,5 @@ class User implements BaseModel {
   String surname;
   String middleName;
 
-  String get fullName => "$firstName $middleName $surname";
+  String get fullName => "$firstName $surname";
 }

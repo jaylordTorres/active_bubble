@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import '../class/idea_model.dart';
+
 import '../constant/main.dart';
 import '../container/ideas/ideas.dart';
-import '../data/data.dart';
 import '../widget/widget.dart';
 
 // final data = ideas.map((e) => IdeaModel.fromJson(e)).toList();

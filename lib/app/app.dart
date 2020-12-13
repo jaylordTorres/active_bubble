@@ -46,7 +46,6 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-    print(_user);
     // return MaterialApp(home: Container(child: Text('sample 2')));
     if (_initialized == false) {
       return Container();

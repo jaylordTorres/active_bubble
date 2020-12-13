@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import '../class/idea_model.dart';
-import '../constant/main.dart';
-import '../container/ideas/ideas.dart';
-import '../data/data.dart';
-import '../widget/widget.dart';
 
-final data = ideas.map((e) => IdeaModel.fromJson(e)).toList();
+import '../constant/route.dart';
+import '../container/ideas/ideas_container.dart';
+import '../container/ideas/setting_idea.dart';
+import '../widget/idea_create.dart';
+import '../widget/page.dart';
+
+// final data = ideas.map((e) => IdeaModel.fromJson(e)).toList();
 
 class IdeasPage extends StatefulWidget {
   static UiRoutes route = UiRoutes.root;
@@ -21,9 +22,7 @@ class _IdeasPageState extends State<IdeasPage> {
   Widget builder() {
     switch (_selectedContainer) {
       case 0:
-        return IdeasContainer(
-          data: data,
-        );
+        return IdeasContainer();
       case 2:
         return SettingContainer();
         break;
@@ -76,7 +75,7 @@ class IdeaCreateFloatingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      tooltip: 'Post',
+      tooltip: 'Post 1',
       child: Icon(Icons.post_add_rounded),
       onPressed: () => _create(context),
     );

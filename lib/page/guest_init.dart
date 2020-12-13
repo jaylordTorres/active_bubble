@@ -1,7 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../constant/main.dart';
-import '../widget/widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import '../widget/page.dart';
+import '../constant/route.dart';
 
 class GuestInitPage extends StatefulWidget {
   static UiRoutes route = UiRoutes.root;

@@ -1,6 +1,7 @@
+import 'package:active_bubble/widget/page.dart';
 import 'package:flutter/material.dart';
-import '../constant/main.dart';
-import '../widget/widget.dart';
+
+import '../constant/route.dart';
 
 class TemplatePage extends StatelessWidget {
   static UiRoutes route = UiRoutes.root;

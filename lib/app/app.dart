@@ -1,10 +1,9 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
+import '../class/store.dart';
 import '../constant/route.dart';
-import '../class/class.dart';
+
 import 'app_page.dart';
 import 'theme_data.dart';
 
@@ -30,20 +29,12 @@ class _MainAppState extends State<MainApp> {
     //
     // firebase
     //
-    await Firebase.initializeApp();
-    FirebaseAuth auth = FirebaseAuth.instance;
-    auth.authStateChanges().listen((user) {
+    FirebaseAuth.instance.authStateChanges().listen((user) {
       Store.user = user;
       setState(() {
         _user = user;
       });
     });
-
-    //
-    // local
-    //
-    final storage = await SharedPreferences.getInstance();
-    Store.storage = storage;
 
     //
     //
@@ -55,9 +46,19 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
+    print(_user);
+    // return MaterialApp(home: Container(child: Text('sample 2')));
     if (_initialized == false) {
       return Container();
     }
+    // return MaterialApp(
+    //   theme: themeData,
+    //   initialRoute: uiRoutes[UiRoutes.guestInit],
+    //   // routes: {"guest-init": (_) => SamplePage()},
+    //   routes: uiGuestRoutePages,
+    //   // home: GuestInitPage(),
+    // );
+
     return AnimatedSwitcher(
       duration: Duration(milliseconds: 500),
       child: _user != null

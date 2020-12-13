@@ -1,7 +1,5 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constant/route.dart';
 import '../class/class.dart';
@@ -30,20 +28,12 @@ class _MainAppState extends State<MainApp> {
     //
     // firebase
     //
-    await Firebase.initializeApp();
-    FirebaseAuth auth = FirebaseAuth.instance;
-    auth.authStateChanges().listen((user) {
+    FirebaseAuth.instance.authStateChanges().listen((user) {
       Store.user = user;
       setState(() {
         _user = user;
       });
     });
-
-    //
-    // local
-    //
-    final storage = await SharedPreferences.getInstance();
-    Store.storage = storage;
 
     //
     //
@@ -55,6 +45,9 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
+    print(_user);
+    print('ss');
+    // return MaterialApp(home: Container(child: Text('sample 2')));
     if (_initialized == false) {
       return Container();
     }

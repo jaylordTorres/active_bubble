@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../util/util.dart';
+
+import '../class/idea_model.dart';
 
 class IdeaReply extends StatelessWidget {
   final IdeaModel idea;

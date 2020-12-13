@@ -15,7 +15,7 @@ class SettingContainer extends StatelessWidget {
         Container(
           margin: EdgeInsets.all(16),
           child: Text(
-            'Settings',
+            'Settings 1',
             style: Theme.of(context).textTheme.headline6,
           ),
         ),

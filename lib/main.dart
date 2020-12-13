@@ -1,4 +1,4 @@
-import 'package:active_bubble/class/class.dart';
+import 'package:active_bubble/class/store.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -24,16 +24,4 @@ void main() async {
   Store.storage = await SharedPreferences.getInstance();
 
   runApp(MainApp());
-}
-
-class SamplePage extends StatelessWidget {
-  const SamplePage({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Container(
-      child: Text('sample 1'),
-    ));
-  }
 }

@@ -1,9 +1,15 @@
+// import 'package:active_bubble/main.dart';
+// import 'package:active_bubble/page/guest_init.dart';
+// import 'package:active_bubble/page/page.dart';
+// import 'package:active_bubble/page/sample.dart';
+import 'package:active_bubble/app/app_page.dart';
+import 'package:active_bubble/class/store.dart';
+import 'package:active_bubble/constant/route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../constant/route.dart';
-import '../class/class.dart';
-import 'app_page.dart';
+// import '../constant/route.dart';
+// import 'app_page.dart';
 import 'theme_data.dart';
 
 /// Main app wrapper
@@ -46,11 +52,18 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     print(_user);
-    print('ss');
     // return MaterialApp(home: Container(child: Text('sample 2')));
     if (_initialized == false) {
       return Container();
     }
+    // return MaterialApp(
+    //   theme: themeData,
+    //   initialRoute: uiRoutes[UiRoutes.guestInit],
+    //   // routes: {"guest-init": (_) => SamplePage()},
+    //   routes: uiGuestRoutePages,
+    //   // home: GuestInitPage(),
+    // );
+
     return AnimatedSwitcher(
       duration: Duration(milliseconds: 500),
       child: _user != null

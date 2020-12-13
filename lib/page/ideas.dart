@@ -1,8 +1,10 @@
+import 'package:active_bubble/widget/idea_create.dart';
+import 'package:active_bubble/widget/page.dart';
 import 'package:flutter/material.dart';
 
-import '../constant/main.dart';
-import '../container/ideas/ideas.dart';
-import '../widget/widget.dart';
+import '../constant/route.dart';
+import '../container/ideas/ideas_container.dart';
+import '../container/ideas/setting_idea.dart';
 
 // final data = ideas.map((e) => IdeaModel.fromJson(e)).toList();
 
@@ -73,7 +75,7 @@ class IdeaCreateFloatingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      tooltip: 'Post',
+      tooltip: 'Post 1',
       child: Icon(Icons.post_add_rounded),
       onPressed: () => _create(context),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../constant/main.dart';
+
+import '../constant/route.dart';
 
 class RootPage extends StatelessWidget {
   static UiRoutes route = UiRoutes.root;

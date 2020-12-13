@@ -1,9 +1,9 @@
-import 'package:active_bubble/class/idea_model.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../widget/idea_reply.dart';
+import '../class/idea_model.dart';
 import '../util/util.dart';
+import '../widget/idea_reply.dart';
 
 class IdeaCard extends StatefulWidget {
   const IdeaCard({Key key, this.idea}) : super(key: key);

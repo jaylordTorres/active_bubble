@@ -1,15 +1,10 @@
-// import 'package:active_bubble/main.dart';
-// import 'package:active_bubble/page/guest_init.dart';
-// import 'package:active_bubble/page/page.dart';
-// import 'package:active_bubble/page/sample.dart';
-import 'package:active_bubble/app/app_page.dart';
-import 'package:active_bubble/class/store.dart';
-import 'package:active_bubble/constant/route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-// import '../constant/route.dart';
-// import 'app_page.dart';
+import '../class/store.dart';
+import '../constant/route.dart';
+
+import 'app_page.dart';
 import 'theme_data.dart';
 
 /// Main app wrapper

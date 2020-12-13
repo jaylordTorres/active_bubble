@@ -1,9 +1,10 @@
-import 'package:active_bubble/class/store.dart';
-import 'package:active_bubble/constant/model.dart';
-import 'package:active_bubble/text_content/message.dart';
-import 'package:active_bubble/util/util.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../class/store.dart';
+import '../constant/model.dart';
+import '../text_content/message.dart';
+import '../util/util.dart';
 
 class IdeaCreate extends StatefulWidget {
   final Function callback;

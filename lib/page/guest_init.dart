@@ -1,10 +1,8 @@
-import 'package:active_bubble/widget/page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:active_bubble/constant/route.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-// import '../constant/main.dart';
-// import '../widget/widget.dart';
+import '../widget/page.dart';
+import '../constant/route.dart';
 
 class GuestInitPage extends StatefulWidget {
   static UiRoutes route = UiRoutes.root;
@@ -47,7 +45,7 @@ class _GuestInitPageState extends State<GuestInitPage> {
                           .headline1
                           .copyWith(fontWeight: FontWeight.w300)),
                   Text(
-                    'Active Bubble 2',
+                    'Active Bubble',
                     style: Theme.of(context).textTheme.headline4,
                   )
                 ],
@@ -58,18 +56,9 @@ class _GuestInitPageState extends State<GuestInitPage> {
           ),
           ElevatedButton(
               onPressed: loading ? null : _loginAsGuest,
-              child: Text('Login as Guest  6'))
+              child: Text('Login as Guest'))
         ],
       ),
     )));
-  }
-}
-
-class SamplePage extends StatelessWidget {
-  const SamplePage({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Container(child: Text('sample 1 2 23 2')));
   }
 }

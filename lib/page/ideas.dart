@@ -1,10 +1,10 @@
-import 'package:active_bubble/widget/idea_create.dart';
-import 'package:active_bubble/widget/page.dart';
 import 'package:flutter/material.dart';
 
 import '../constant/route.dart';
 import '../container/ideas/ideas_container.dart';
 import '../container/ideas/setting_idea.dart';
+import '../widget/idea_create.dart';
+import '../widget/page.dart';
 
 // final data = ideas.map((e) => IdeaModel.fromJson(e)).toList();
 

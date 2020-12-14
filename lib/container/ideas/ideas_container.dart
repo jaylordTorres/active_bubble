@@ -12,32 +12,96 @@ class IdeasContainer extends StatefulWidget {
 }
 
 class _IdeasContainerState extends State<IdeasContainer> {
+  List<QueryDocumentSnapshot> data = [];
+  bool loading = false;
+
   Query query = FirebaseFirestore.instance
       .collection(FireCollections.article)
-      .orderBy("cd", descending: true);
+      .orderBy("cd", descending: true)
+      .limit(5);
+
+  getData() async {
+    setState(() {
+      loading = true;
+    });
+    QuerySnapshot newData;
+    if (data.isNotEmpty) {
+      newData = await query.startAfterDocument(data.last).get();
+    } else {
+      newData = await query.get();
+    }
+    setState(() {
+      data.addAll(newData.docs);
+      loading = false;
+    });
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<QuerySnapshot>(
-        stream: query.snapshots(),
-        builder: (context, stream) {
-          if (stream.connectionState == ConnectionState.waiting) {
-            return LinearProgressIndicator();
-          }
-          if (stream.hasError) {
-            return Center(
-              child: Text(
-                stream.error.toString(),
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle1
-                    .copyWith(color: Colors.red),
+    // if (loading) {
+    //   return LinearProgressIndicator();
+    // }
+    // print(data);
+    // print(data.length.toString());
+    return Column(
+      children: [
+        Expanded(
+          child: CustomScrollView(
+            slivers: [
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    return IdeaCard(
+                      key: Key(data.elementAt(index).id),
+                      idea: data.elementAt(index),
+                    );
+                  },
+                  childCount: data.length,
+                ),
               ),
-            );
-          }
-          QuerySnapshot querySnapshot = stream.data;
-          return body(context, querySnapshot);
-        });
+            ],
+          ),
+        ),
+        ElevatedButton(
+          child: Text('fetch'),
+          onPressed: () {
+            getData();
+          },
+        ),
+        if (loading) ...{LinearProgressIndicator()},
+      ],
+    );
   }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   return StreamBuilder<QuerySnapshot>(
+  //       stream: query.snapshots(),
+  //       builder: (context, stream) {
+  //         if (stream.connectionState == ConnectionState.waiting) {
+  //           return LinearProgressIndicator();
+  //         }
+  //         if (stream.hasError) {
+  //           return Center(
+  //             child: Text(
+  //               stream.error.toString(),
+  //               style: Theme.of(context)
+  //                   .textTheme
+  //                   .subtitle1
+  //                   .copyWith(color: Colors.red),
+  //             ),
+  //           );
+  //         }
+  //         QuerySnapshot querySnapshot = stream.data;
+  //         return body(context, querySnapshot);
+  //       });
+  // }
 
   Widget body(BuildContext context, QuerySnapshot data) {
     return CustomScrollView(

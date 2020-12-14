@@ -19,17 +19,17 @@ class IdeasPage extends StatefulWidget {
 class _IdeasPageState extends State<IdeasPage> {
   int _selectedContainer = 0;
 
-  Widget builder() {
-    switch (_selectedContainer) {
-      case 0:
-        return IdeasContainer();
-      case 2:
-        return SettingContainer();
-        break;
-      default:
-        return Container();
-    }
-  }
+  // Widget builder() {
+  //   switch (_selectedContainer) {
+  //     case 0:
+  //       return IdeasContainer();
+  //     case 2:
+  //       return SettingContainer();
+  //       break;
+  //     default:
+  //       return Container();
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,10 @@ class _IdeasPageState extends State<IdeasPage> {
                   icon: Icon(Icons.settings), label: 'Settings'),
             ]),
         body: AnimatedSwitcher(
-          child: builder(),
+          child: IndexedStack(
+            index: _selectedContainer,
+            children: [IdeasContainer(), SettingContainer(), Container()],
+          ),
           duration: Duration(milliseconds: 200),
         ),
       ),
